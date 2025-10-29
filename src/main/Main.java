@@ -1,0 +1,27 @@
+package main;
+
+import javax.swing.JFrame;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        JFrame window = new JFrame();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("Mystic Valley");
+
+        GamePanel gp = new GamePanel(); // ✅ สร้าง GamePanel ก่อนใช้
+        gp.gameState = GamePanel.STATE_TITLE; // ✅ ตั้งค่าให้เริ่มที่ Title
+
+        window.add(gp);
+        window.pack();
+
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+        
+        gp.requestFocusInWindow();
+
+        gp.startGameThread(); // ✅ เริ่มเกมหลัง setVisible
+    }
+}
